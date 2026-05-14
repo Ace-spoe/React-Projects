@@ -1,0 +1,82 @@
+/* General container */
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+/* Title */
+.qr-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+/* Input + button wrapper */
+.qr-input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+/* Input field */
+.qr-input {
+  padding: 10px 12px;
+  width: 240px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 14px;
+  outline: none;
+}
+
+.qr-input::placeholder {
+  color: #64748b;
+}
+
+.qr-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* Button */
+.qr-button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #6366f1;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.qr-button:hover:not(:disabled) {
+  background: #4f46e5;
+}
+
+.qr-button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.qr-button:disabled {
+  background: #334155;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* QR Code container */
+.qr-code {
+  margin-top: 10px;
+  padding: 16px;
+  background: #020617;
+  border-radius: 12px;
+  border: 1px solid #1e293b;
+}

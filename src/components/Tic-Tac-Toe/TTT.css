@@ -1,0 +1,41 @@
+.btns{
+  padding: 12px 18px;
+  border: none;
+  background-color: aquamarine;
+  border-radius: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 12px;
+  transition: 0.3s ease;
+  
+}
+.container{
+    gap: 12px;
+}
+.boxes-container{
+    
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.msg{
+    font-size: 36px;
+    margin: 12px auto;
+    text-align: start;
+    
+}
+
+.box{
+    width: 120px;
+    border: 1px solid forestgreen;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: white;
+}
+.btns:hover{
+     transform: translateY(-5px);
+}

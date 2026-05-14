@@ -1,0 +1,20 @@
+
+.star-container{
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.star-rating {
+  display: flex;
+  gap: 5px; /* space between stars */
+}
+
+.star {
+  cursor: pointer;
+  font-size: 48px; /* adjust size */
+  color: gray;     /* default color */
+  transition: color 0.2s;
+}
+
+/* Optional hover effect skeleton */

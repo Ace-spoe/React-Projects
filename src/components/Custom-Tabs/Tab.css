@@ -1,0 +1,57 @@
+/* Container */
+.tabs-container {
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: system-ui, sans-serif;
+  margin-top: 15px;
+  
+  
+}
+
+/* Header (buttons) */
+.tabs-header {
+  display: flex;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* Tab buttons */
+.tab-btn {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+/* Hover effect */
+.tab-btn:hover {
+  background: #f3f4f6;
+}
+
+/* Active tab (you will control this class later) */
+.tab-btn.active {
+  border-bottom: 3px solid #6366f1;
+  font-weight: bold;
+  color: #6366f1;
+}
+
+/* Content area */
+.tabs-content {
+  padding: 40px;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  text-align: center;
+}
+
+/* Panels */
+.tab-panel {
+  display: none;
+}
+
+/* Active panel (you will control this) */
+.tab-panel.active {
+  display: block;
+  
+}

@@ -1,0 +1,67 @@
+/* Wrapper */
+.scroll-page {
+  font-family: system-ui, sans-serif;
+  height: 100vh; /* Make sure the height is constrained */
+  
+  overflow-y: hidden; /* Enable vertical scrolling */
+   /* Temporary border for debugging, remove later */
+}
+
+/* Top progress track */
+.scroll-bar {
+  
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: rgba(100, 116, 139, 0.2);
+  z-index: 1000;
+}
+
+/* Progress fill */
+.scroll-progress {
+  
+  height: 100%;
+  width: 0%; /* Will be dynamically controlled */
+  background: #6366f1;
+  transition: width 0.1s linear;
+}
+
+/* Content layout */
+.scroll-content {
+  
+  padding: 80px 20px 40px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Title */
+.scroll-content h1 {
+  
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+/* Source text */
+.scroll-source {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-bottom: 24px;
+}
+
+/* Body placeholder */
+.scroll-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  
+}
+
+/* Optional: style for whatever you render later */
+.scroll-body > * {
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid rgba(100, 116, 139, 0.2);
+}
