@@ -1,0 +1,559 @@
+/* -------------------------------------------------------------------------- */
+/* 1. Design System & Variables (Scoped to Component Wrapper)                  */
+/* -------------------------------------------------------------------------- */
+.analytics-dashboard {
+  --bg-main: #f8fafc;
+  --surface: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.75);
+  --border: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  
+  /* Brand Palette */
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --primary-light: #e0e7ff;
+  --accent: #0ea5e9;
+  --success: #10b981;
+  --success-light: #d1fae5;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+
+  /* Layout & Depth */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typography / Containment defaults */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-main);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.analytics-dashboard *,
+.analytics-dashboard *::before,
+.analytics-dashboard *::after {
+  box-sizing: border-box;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Filter Bar (Modern Grid & Controls)                                     */
+/* -------------------------------------------------------------------------- */
+.analytics-dashboard .filter-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.analytics-dashboard .filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  align-items: flex-end;
+}
+
+/* Make checkbox row sit nicely on wide screens */
+@media (min-width: 1024px) {
+  .analytics-dashboard .filter-grid {
+    grid-template-columns: repeat(5, 1fr) auto;
+  }
+}
+
+.analytics-dashboard .filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.analytics-dashboard .filter-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.analytics-dashboard .filter-input,
+.analytics-dashboard .filter-select {
+  width: 100%;
+  height: 42px;
+  padding: 0 0.85rem;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  transition: var(--transition-smooth);
+}
+
+.analytics-dashboard .filter-input:focus,
+.analytics-dashboard .filter-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: var(--surface);
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+/* In-Stock Checkbox Special Layout */
+.analytics-dashboard .checkbox-group {
+  justify-content: center;
+  height: 42px;
+}
+
+.analytics-dashboard .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.analytics-dashboard .checkbox-input {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+  background: var(--surface);
+}
+
+.analytics-dashboard .checkbox-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.analytics-dashboard .checkbox-input:checked::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Stats Panel & Analytics Breakdown                                       */
+/* -------------------------------------------------------------------------- */
+.analytics-dashboard .stats-panel {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--bg-main) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.analytics-dashboard .stats-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.analytics-dashboard .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.analytics-dashboard .stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+
+.analytics-dashboard .stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.analytics-dashboard .stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.analytics-dashboard .stat-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Categories Section Inside Stats */
+.analytics-dashboard h4 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.analytics-dashboard .category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.analytics-dashboard .category-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+
+.analytics-dashboard .category-count {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Product Display Grid & Cards                                             */
+/* -------------------------------------------------------------------------- */
+.analytics-dashboard .product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.analytics-dashboard .product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+
+.analytics-dashboard .product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.analytics-dashboard .product-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.analytics-dashboard .product-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+}
+
+.analytics-dashboard .product-rating {
+  font-size: 0.9rem;
+  color: var(--warning);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.analytics-dashboard .product-category {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-main);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  align-self: flex-start;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+/* Compare Button Micro-interactions */
+.analytics-dashboard .compare-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid var(--primary);
+  background-color: transparent;
+  color: var(--primary);
+  transition: var(--transition-smooth);
+}
+
+.analytics-dashboard .compare-btn:hover:not(:disabled) {
+  background-color: var(--primary);
+  color: var(--surface);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+.analytics-dashboard .compare-btn:disabled {
+  background-color: var(--success-light);
+  border-color: var(--success);
+  color: var(--success);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Empty State Styling */
+.analytics-dashboard .empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--surface);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. Compare Drawer Bar (Floating / Fixed Panel)                             */
+/* -------------------------------------------------------------------------- */
+.analytics-dashboard .compare-bar {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3rem);
+  max-width: 1200px;
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.05), var(--shadow-lg);
+  z-index: 1000;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+  from { transform: translate(-50%, 120%); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.analytics-dashboard .compare-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+.analytics-dashboard .compare-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.analytics-dashboard .clear-btn,
+.analytics-dashboard .close-bar-btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.analytics-dashboard .clear-btn {
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+.analytics-dashboard .clear-btn:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* Compare Matrix Table Design */
+.analytics-dashboard .compare-table-container {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  max-height: 300px;
+}
+
+.analytics-dashboard .compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.analytics-dashboard .compare-table th,
+.analytics-dashboard .compare-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  min-width: 160px;
+}
+
+.analytics-dashboard .compare-table thead th {
+  background: var(--bg-main);
+  font-weight: 700;
+  color: var(--text-main);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Sticky feature column on left */
+.analytics-dashboard .compare-table td.feature-label {
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-main);
+  min-width: 130px;
+  width: 130px;
+  position: sticky;
+  left: 0;
+  z-index: 5;
+}
+
+.analytics-dashboard .compare-table th {
+  position: relative;
+  padding-right: 2.5rem; /* Room for removal mark */
+}
+
+/* Inline Header Item Deletion Button */
+.analytics-dashboard .remove-btn-header {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: var(--transition-smooth);
+}
+
+.analytics-dashboard .remove-btn-header:hover {
+  background: var(--border);
+  color: var(--danger);
+}
+
+.analytics-dashboard .feature-value {
+  font-weight: 500;
+}
+
+.analytics-dashboard .compare-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.analytics-dashboard .close-bar-btn {
+  background: var(--text-main);
+  border: 1px solid var(--text-main);
+  color: var(--surface);
+}
+
+.analytics-dashboard .close-bar-btn:hover {
+  background: #1e293b;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. Utility Elements (Perf Render Badge)                                    */
+/* -------------------------------------------------------------------------- */
+.analytics-dashboard .render-time {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: monospace;
+  background-color: var(--surface);
+  color: var(--success);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.75rem;
+  border-radius: 30px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+
+.analytics-dashboard .render-time.slow {
+  color: var(--danger);
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.hide-btn {
+  background: #4a5568;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hide-btn:hover {
+  background: #2d3748;
+  transform: scale(1.02);
+}

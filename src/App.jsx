@@ -14,34 +14,35 @@ import TTT from './components/Tic-Tac-Toe'
 import FeatureFlagsGlobalState from './components/Feature-flag/context'
 import TaskManager from './components/Task-Sprint-Manager'
 import RickandMorty from "./components/useFetch/RickandMorty"
-
+import AnalyticsDashBoard from "./components/Product-Analytics-Dashboard"
 
 const App = () => {
   return (
    <main>
-    <Accordian/>
-    <RandomColor/>
-    <StarRating/>
-    <ImageSlider 
+     <Accordian/>
+     <RandomColor/>
+     <StarRating/>
+     <ImageSlider 
       url="https://picsum.photos/v2/list"
       limit={5}/>
-    {/* <LoadMoreData
+     {/* <LoadMoreData
       url="https://dummyjson.com/products"
       limit={20}
       /> */}
-    <QRCodeGenerator/>
-    <Theme/>
-    <ScrollIndicator 
-    url="https://dummyjson.com/products?limit=100"/>
-    <Tabs/>
-    <AutoComplete/>
-    <GitHub />
-    <TTT/>
+     <QRCodeGenerator/>
+     <Theme/>
+     <ScrollIndicator 
+     url="https://dummyjson.com/products?limit=100"/>
+     <Tabs/>
+     <AutoComplete/>
+     <GitHub />
+     <TTT/>
      {/* <FeatureFlagsGlobalState>
       <FeatureFlags/>
      </FeatureFlagsGlobalState> */}
      <TaskManager/>
      <RickandMorty/>
+     <AnalyticsDashBoard/>
    </main>
   )
 }
