@@ -9,6 +9,8 @@ function App() {
 
 
     function handleClick(id){
+
+      //
        if (!isDoubleMode) {
          (openIds.includes(id)) ? 
          (setOpenIds([])) : 
@@ -37,7 +39,7 @@ function App() {
           <div key={item.id} className="qa-item">
             <div className="question-row">
               <h3 className="question">{item.question}</h3>
-              <button onClick={() => {handleClick(item.id)}} className="toggle-btn ">+</button>
+              <button onClick={() => {handleClick(item.id)}} className="toggle-btn ">{openIds.includes(item.id) ?"-" :"+"}</button>
             </div>
 
             {/* Answer hidden for now */}
